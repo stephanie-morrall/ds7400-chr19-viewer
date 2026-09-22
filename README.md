@@ -1,21 +1,23 @@
 # FOF-CT Chr19 Viewer
 
-- A brief description of your application. A web application for viewing
+- **A brief description of your application:** A web application for viewing
   fluorescence-in-situ chromosome tracing (FOF-CT) spots on mouse chromosome
   19. The Viewer tab is a gallery of cells. Click a tile to open one cell as a
   3D Plotly scene. The Notebook tab and each cell page store text notes,
   per-fiber trace notes, per-locus TAD notes, and an optional pinned locus in
   SQLite through FastAPI.
 
-- The type of data being visualized. Imaged loci on chromosome 19. Each spot
+- **The type of data being visualized:** Imaged loci on chromosome 19. Each spot
   has `Spot_ID`, `Trace_ID`, `X`, `Y`, `Z` (microns), genomic start and end,
-  and `Cell_ID`. Spots that share a `Trace_ID` are one traced fiber. When a
-  local catalog built from the private tables is present, the gallery covers
-  13,306 labeled cells across four biological replicates (biorep01 through
-  biorep04). A clone without that catalog loads the committed sample cells
-  411, 328, and 530.
+  and `Cell_ID`. Spots that share a `Trace_ID` are one traced fiber. The
+  replicate 1 coordinates are the 4DN DNA-spot/trace core table
+  [4DNFIQCHBYZ6](https://data.4dnucleome.org/files-processed/4DNFIQCHBYZ6/)
+  from the Siyuan Wang lab. When a local catalog built from the private tables
+  is present, the gallery covers 13,306 labeled cells across four biological
+  replicates (biorep01 through biorep04). A clone without that catalog loads
+  the committed sample cells 411, 328, and 530.
 
-- Instructions for running the application.
+- **Instructions for running the application:**
   1. Start Docker Desktop.
   2. In the repository root, run `docker compose up --build`.
   3. In another terminal, run `cd web`.
@@ -31,11 +33,11 @@
   through `biorep04/`. Do not commit those catalog files, `data/`, or
   `api/data/` (the SQLite file).
 
-- Major libraries/frameworks used. React 19, Vite 8, Plotly
+- **Major libraries/frameworks used:** React 19, Vite 8, Plotly
   (`react-plotly.js` and `plotly.js-dist-min`), FastAPI, SQLite, and Docker
   Compose.
 
-- A brief description of implemented features.
+- **A brief description of implemented features:**
   - Gallery of square stills, 30 cells per page, three columns; the whole tile
     opens the cell
   - Filters: Replicate, Cell type, Traces, each with an Any option
@@ -61,7 +63,7 @@
   - FastAPI + SQLite in Docker, including an empty `predictions` table for a
     later cell-type classifier
 
-- Whether you implemented annotation. Yes. A Notebook tab holds one pad for
+- **Whether you implemented annotation:** Yes. A Notebook tab holds one pad for
   the dataset, then a card for each cell that has a cell note, fiber note, or
   TAD note. Nested boxes on that card hold the fiber and TAD notes. Click a
   card or its note text to open that cell. Each cell page puts the note boxes
@@ -70,7 +72,7 @@
   locus, and an optional pinned locus. Notes, labels, TADs, and pins save
   through FastAPI. Delete on a note box removes that row from SQLite.
 
-- Whether you implemented a backend/database. Yes. FastAPI + SQLite running in
+- **Whether you implemented a backend/database:** Yes. FastAPI + SQLite running in
   Docker Compose. The database stores the notebook pad, per-cell notes,
   per-fiber trace labels, per-cell TAD notes, pins, and an empty `predictions`
   scaffold.
