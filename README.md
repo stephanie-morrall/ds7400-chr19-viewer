@@ -76,24 +76,3 @@
   Docker Compose. The database stores the notebook pad, per-cell notes,
   per-fiber trace labels, per-cell TAD notes, pins, and an empty `predictions`
   scaffold.
-
-## Three-minute demo
-
-Record a live run of `http://localhost:5173/` with Docker Compose already up.
-Stay under three minutes.
-
-1. Say the data: FOF-CT spots on mouse chromosome 19, X Y Z in microns.
-2. Show the web app (URL bar and the three tabs).
-3. On Viewer: gallery, one filter or jump-to-page, click a square preview to
-   open a cell, rotate the 3D plot.
-4. Type a cell note, click Save. Click a trace name in the color key, type a
-   fiber note, and Save. Click a spot once to pin it. Double-click a spot to
-   open a TAD note, type, and Save. Delete removes a note.
-5. Open Notebook, type a line on the dataset pad, click Save. Show that cell's
-   card with nested fiber and TAD notes. Click the card or the note text to
-   jump to the cell.
-6. Refresh the browser. Open the same cell and Notebook and show the note,
-   fiber note, TAD note, and pin are still there (that is the database).
-
-The Homework 1 snapshot is the GitHub Release tagged `hw1`. Later homework
-snapshots can be added as new releases on this same repository.
