@@ -1,0 +1,19 @@
+# Local data (never push)
+data/
+
+# Instructor / local documents
+documents/
+
+# macOS
+.DS_Store
+
+# Python / env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+
+# SQLite annotations written by the Docker API
+api/data/

@@ -1,0 +1,497 @@
+.viewer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100svh;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 24px 16px 16px;
+  box-sizing: border-box;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.viewer-header h1 {
+  font-size: 32px;
+  letter-spacing: -0.6px;
+  margin: 0 0 8px;
+}
+
+.viewer-header p {
+  width: 100%;
+  max-width: min(42rem, 100%);
+  margin: 0 0 16px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.viewer-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.viewer-tabs button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.viewer-tabs button.active {
+  color: var(--text-h);
+  border-bottom-color: currentColor;
+}
+
+.viewer-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+  color: var(--text-h);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.viewer-toolbar .toggle {
+  gap: 6px;
+  cursor: pointer;
+}
+
+.cell-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-h);
+}
+
+.cell-meta > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.cell-meta dt {
+  margin: 0;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.cell-meta dt::after {
+  content: ':';
+}
+
+.cell-meta dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.cell-meta-note {
+  flex: 1 1 100%;
+  font-size: 14px;
+}
+
+.cell-meta-note dd {
+  font-weight: 400;
+}
+
+.viewer-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.viewer-toolbar select {
+  font: inherit;
+  color: var(--text-h);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+/* Cell page: the 3D cube fills leftover viewport beside the notes. */
+.viewer-cell {
+  height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
+}
+
+.viewer-cell .viewer-header p {
+  display: none;
+}
+
+.viewer-cell .viewer-header,
+.viewer-cell .viewer-toolbar,
+.viewer-cell .trace-key {
+  flex-shrink: 0;
+}
+
+.viewer-stage {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  gap: 16px;
+}
+
+.viewer-notes {
+  flex: 0 1 360px;
+  width: 360px;
+  max-width: 46%;
+  min-width: 220px;
+  min-height: 0;
+  overflow: auto;
+}
+
+.viewer-plot-slot {
+  flex: 1 1 62%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  border: none;
+  background: transparent;
+}
+
+.viewer-plot {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  transform: translateY(-12px);
+}
+
+/* Parks WebGL off-screen at a large size so the next open does not remount. */
+.viewer-stage-parked {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70vw;
+  height: 70vh;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.page-jump {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-jump input {
+  font: inherit;
+  color: var(--text-h);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  width: 4.5em;
+}
+
+.page-btn {
+  font: inherit;
+  color: var(--text-h);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cell-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--code-bg);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cell-tile-plot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.cell-tile-label {
+  position: absolute;
+  left: 8px;
+  bottom: 6px;
+  z-index: 2;
+  font: inherit;
+  font-size: 13px;
+  color: var(--text-h);
+  background: rgba(22, 23, 29, 0.72);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  pointer-events: none;
+}
+
+.trace-key {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 8px;
+  color: var(--text-h);
+}
+
+.trace-key-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.trace-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.trace-key-name {
+  font: inherit;
+  color: var(--text-h);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.about {
+  width: 100%;
+  max-width: min(60rem, 100%);
+  min-width: 0;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.about h2 {
+  font-size: 20px;
+  margin: 28px 0 8px;
+}
+
+.about section:first-child h2 {
+  margin-top: 0;
+}
+
+.about p {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 12px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.about p code {
+  display: inline;
+  padding: 0.05em 0.35em;
+  font-size: 0.92em;
+  line-height: inherit;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.notebook {
+  width: 100%;
+  max-width: min(60rem, 100%);
+  min-width: 0;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.notebook h2 {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+
+.notebook-cells-heading {
+  margin-top: 28px;
+}
+
+.notebook p {
+  margin: 0 0 12px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.cell-note-card {
+  margin: 0 0 16px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--code-bg);
+  min-width: 0;
+  cursor: pointer;
+}
+
+.cell-note-card textarea {
+  cursor: pointer;
+}
+
+.cell-note-card button {
+  cursor: pointer;
+}
+
+.cell-note-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cell-note-card-title {
+  margin: 0;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-h);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.nested-note {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  min-width: 0;
+}
+
+.nested-note-trace {
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  border: 1px solid var(--accent-border);
+}
+
+.nested-note-tad {
+  background: color-mix(in srgb, #2a9d8f 14%, var(--bg));
+  border: 1px solid color-mix(in srgb, #2a9d8f 45%, var(--border));
+}
+
+.nested-note-heading,
+.tad-note-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: var(--text-h);
+}
+
+.tad-note-location {
+  margin: 0 0 8px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.cell-note {
+  margin: 0 0 12px;
+  max-width: 100%;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.cell-note label {
+  display: block;
+  margin: 0 0 6px;
+  color: var(--text-h);
+}
+
+.note-box {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--text-h);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.note-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.note-status {
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.api-banner {
+  margin: 0 0 16px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--code-bg);
+  max-width: min(42rem, 100%);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.api-banner code,
+.notebook code {
+  display: inline;
+  padding: 0.05em 0.35em;
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
