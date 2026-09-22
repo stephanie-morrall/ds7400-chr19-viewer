@@ -20,6 +20,8 @@
   the committed sample cells 411, 328, and 530.
 
 - **Instructions for running the application:**
+  The API runs in Docker. The React app needs Node.js 22, or 20.19 or newer
+  (`node -v`).
   1. Start Docker Desktop.
   2. In the repository root, run `docker compose up --build`.
   3. In another terminal, run `cd web`.

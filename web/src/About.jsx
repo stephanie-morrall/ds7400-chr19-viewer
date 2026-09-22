@@ -30,7 +30,7 @@ function About() {
           Each spot is one imaged locus on mouse chromosome 19 from
           fluorescence-in-situ chromosome tracing (FOF-CT). Columns include
           Spot_ID, Trace_ID, X, Y, Z in microns, genomic start and end, and
-          Cell_ID. Spots that share a Trace_ID are one traced fiber, drawn in
+          Cell_ID. Spots that share a Trace_ID are one trace, drawn in
           genomic order.
         </p>
         <p>
@@ -70,7 +70,7 @@ function About() {
         <p>
           The research application this viewer is built for is cell-type
           classification from chromosome-19 spatial structure: whether the 3D
-          arrangement of traced chr19 fibers in a cell is enough to recover
+          arrangement of chr19 traces in a cell is enough to recover
           the cell-type label.
         </p>
         <p>
@@ -78,15 +78,15 @@ function About() {
           hepatocytes or macrophages as grouped examples before any model
           exists. The Replicate filter checks whether a pattern holds across
           the four biological replicates. The Traces filter finds cells with a
-          chosen number of chr19 copies. Jump-to-page makes a 13,306-cell
+          chosen number of traces. Jump-to-page makes a 13,306-cell
           catalog searchable by position. Each tile is a canvas snapshot so
-          ninety previews can stay on one page.
+          thirty previews can stay on one page.
         </p>
         <p>
-          On one cell, a checkbox per Trace_ID hides or shows each fiber so
-          copies can be compared. A color key next to those checkboxes uses
+          On one cell, a checkbox per Trace_ID hides or shows each trace. A
+          color key next to those checkboxes uses
           the same colors as the 3D plot. Click a trace name in the key to
-          open a note box for that fiber. Click a spot once to pin genomic
+          open a note box for that trace. Click a spot once to pin genomic
           start, Spot_ID, and the recorded distances to the lamina and
           nucleolus; that pin is stored in SQLite. Double-click a spot to
           open a TAD note titled with that locus's TAD number (the 1-based
@@ -94,7 +94,7 @@ function About() {
           location. Note boxes sit to the left of the 3D cube. A text note on
           the same page is a per-cell label. The
           Notebook tab holds one pad for the whole dataset, then a card for
-          each cell that has notes. Fiber and TAD notes for that cell sit in
+          each cell that has notes. Trace and TAD notes for that cell sit in
           nested boxes on the same card. Click a card or its note text to open
           that cell.
           Nuclear-envelope and nucleolus wireframes are toggles on sample cells
@@ -118,7 +118,7 @@ function About() {
           line: a Classify control that writes a predicted type beside the
           catalog label, with a confidence if the model supplies one. On the
           gallery, the same prediction belongs on the tile caption under the
-          cell id, so a page of ninety cells can be scanned for agreement or
+          cell id, so a page of thirty cells can be scanned for agreement or
           disagreement with the label. This homework is the viewer those
           controls will attach to.
         </p>

@@ -479,9 +479,10 @@
 .api-banner {
   margin: 0 0 16px;
   padding: 8px 10px;
-  border: 1px solid var(--border);
+  border: 1px solid #f87171;
   border-radius: 6px;
   background: var(--code-bg);
+  color: #f87171;
   max-width: min(42rem, 100%);
   overflow-wrap: break-word;
   word-break: break-word;
