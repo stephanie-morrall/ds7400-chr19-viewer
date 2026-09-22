@@ -12,7 +12,9 @@
   and `Cell_ID`. Spots that share a `Trace_ID` are one traced fiber. The
   replicate 1 coordinates are the 4DN DNA-spot/trace core table
   [4DNFIQCHBYZ6](https://data.4dnucleome.org/files-processed/4DNFIQCHBYZ6/)
-  from the Siyuan Wang lab. When a local catalog built from the private tables
+  from the Siyuan Wang lab, reported in Liu et al.,
+  [Multiplexed imaging of nucleome architectures in single cells of mammalian tissue](https://pubmed.ncbi.nlm.nih.gov/32518300/)
+  (Nature Communications, 2020). When a local catalog built from the private tables
   is present, the gallery covers 13,306 labeled cells across four biological
   replicates (biorep01 through biorep04). A clone without that catalog loads
   the committed sample cells 411, 328, and 530.
