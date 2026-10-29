@@ -3,7 +3,7 @@
 Reads the gitignored FOF-CT tables for biorep01–04, joins each spot to its
 lamina and nucleolus distances, and writes one JSON file per cell plus a catalog
 the gallery paginates and filters. The browser loads those files from
-web/public/biorep0N/, which is gitignored so the CSVs never go on GitHub.
+frontend/public/biorep0N/, which is gitignored so the CSVs never go on GitHub.
 """
 
 import csv
@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RAW_ROOT = ROOT / "data" / "raw"
 LABELS = ROOT / "data" / "labels"
-PUBLIC = ROOT / "web" / "public"
+PUBLIC = ROOT / "frontend" / "public"
 
 # Labeled cells with chr19 spots, used as a write-time check.
 EXPECTED_TOTAL = 13306

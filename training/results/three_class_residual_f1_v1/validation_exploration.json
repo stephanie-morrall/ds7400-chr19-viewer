@@ -1,0 +1,20 @@
+{
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "improved_macro_f1": [
+    0.4790578337775761,
+    0.4915963152844713,
+    0.48978938965854407
+  ],
+  "baseline_macro_f1": [
+    0.4829511612120308,
+    0.47201400299745583,
+    0.4771057245588877
+  ],
+  "improved_macro_f1_mean": 0.4868145129068638,
+  "baseline_macro_f1_mean": 0.47735696292279145,
+  "note": "Exploratory validation across independent seeds; not an ensemble."
+}

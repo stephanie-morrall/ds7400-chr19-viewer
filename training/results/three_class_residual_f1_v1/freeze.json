@@ -1,0 +1,22 @@
+{
+  "frozen_utc": "2026-10-29T02:58:40.893645+00:00",
+  "artifacts": {
+    "weights.pt": "b25fc547cec3b26c1999e0f14be4a9a2ee9c953fc67232eac69b01ac5e98e33f",
+    "baseline.pt": "7172b6fb613f4d2adb7356e2c3ddc4579089e29e9b9a0633351b8bd91976ae68",
+    "run.json": "05063a34310b3b7d4cb14137b23ca6c9f6eab067533911c4a3b692cf6e57bca0",
+    "validation_metrics.json": "d37cc8ff6834d7296fc66887d7021244f6e1f7676f0e5410c7070d00ca4eb108",
+    "validation_exploration.json": "e261decd2d7b9bc5f0f5a6a54928e68d5048ec79b29e73d7d5c44258fa4f207d",
+    "history.csv": "3e7961699df082ab6f4ea665d5f14d61606a2ffd9ccd00a50b4db22d3bdbc64d",
+    "requirements-model.txt": "ca15704f8aac4bbf5b76564b80400f50d6112b349d412cdb6d618602b0681feb"
+  },
+  "implementation": {
+    "final_model.py": "35a3a1cdf4b2def4514b986465a8bc6afd0fcd56090113cda56371664eac3070",
+    "features.py": "0b56423a21f9b537df75edc99434af348b4f963a9289736a0b42808d66666a54",
+    "cleaning.py": "1c425a4a01612996b6fa90ae16fc21619bc7be1f7d0c13d6867ca296a8d7e8ba",
+    "prepare.py": "e4833081ebb0f3e9327927c65607f995a4ef5a264ab731b2a9fe7a73e95be8d6",
+    "data.py": "1099475307a1a9f89ca6b9c6b2dcb0cf3029ee8f79fcfc225930097a994f0e51",
+    "class_selection.py": "3d03df2e36c8c102d7ba4e73b543eed5b7b18d0f499fa8e9d672c3262a545256"
+  },
+  "test": "replicate 4, previously used by older models",
+  "selection": "seed 42 predeclared; no tuning after test"
+}

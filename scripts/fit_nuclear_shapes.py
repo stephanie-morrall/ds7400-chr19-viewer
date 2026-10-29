@@ -14,7 +14,7 @@ translate, tilt, and mildly rescale it.
 Distances enter as *signed* depths, so a spot must sit inside the envelope and
 outside the nucleolus to score well. That is what keeps the fit physically legal.
 
-Writes web/public/sample/shapes.json, which the viewer draws as toggleable surfaces.
+Writes frontend/public/sample/shapes.json, which the viewer draws as toggleable surfaces.
 """
 
 import json
@@ -27,9 +27,9 @@ from scipy.spatial.transform import Rotation
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw" / "biorep01"
-OUT = ROOT / "web" / "public" / "sample" / "shapes.json"
+OUT = ROOT / "frontend" / "public" / "sample" / "shapes.json"
 
-# Cells carried in the browser sample. Keep in sync with web/public/sample/cells.csv.
+# Cells carried in the browser sample match frontend/public/sample/cells.csv.
 SAMPLE_CELLS = ("411", "328", "530")
 
 # Canonical nucleus before fitting: semi-axes (a, a, a * FLATTEN) with a taken from

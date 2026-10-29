@@ -1,9 +1,16 @@
 services:
   api:
-    build: ./api
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./api/data:/data
+      - ./backend/data:/data
+      - ./data:/app/data:ro
+      - ./backend/training-runs:/app/training-runs
     environment:
       SQLITE_PATH: /data/annotations.db
+      MODEL_DIR: /app/training/results/three_class_residual_f1_v1
+      TRAINING_DATA_DIR: /app/data
+      TRAINING_OUTPUT_DIR: /app/training-runs

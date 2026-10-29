@@ -360,7 +360,7 @@ function Notebook({ onOpenCell, loadSpots }) {
 
       <h2 className="notebook-cells-heading">Cell notes</h2>
       <p>
-        Every cell with a saved cell note, fiber note, or TAD note appears
+        Every cell with a saved cell note, trace note, or TAD note appears
         here. Click the card title or the note text to open that cell. Save
         and Delete stay on the buttons. Trace and TAD notes sit in a nested
         box on the same card.

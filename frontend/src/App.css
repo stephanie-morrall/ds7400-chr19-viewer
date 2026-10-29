@@ -30,6 +30,7 @@
 
 .viewer-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 16px;
@@ -495,4 +496,114 @@
   font-size: 0.92em;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+
+.prediction-panel {
+  margin: 0 0 16px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--code-bg);
+}
+
+.prediction-panel p {
+  margin: 10px 0 0;
+}
+
+.prediction-detail {
+  margin-top: 10px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.prediction-detail summary {
+  cursor: pointer;
+}
+
+
+.training-panel {
+  width: 100%;
+  max-width: 1100px;
+  min-width: 0;
+  color: var(--text-h);
+}
+
+.training-section {
+  margin: 0 0 24px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-width: 0;
+}
+
+.training-section h2 {
+  font-size: 21px;
+  margin: 0 0 10px;
+}
+
+.training-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.training-controls input[type='number'] {
+  width: 5em;
+  padding: 5px 8px;
+  margin-left: 8px;
+  font: inherit;
+  color: var(--text-h);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.training-description {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.training-status {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--accent-bg);
+}
+
+.training-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.training-table-wrap {
+  overflow-x: auto;
+}
+
+.training-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+}
+
+.training-table th,
+.training-table td {
+  text-align: left;
+  border: 1px solid var(--border);
+  padding: 9px;
+}
+
+.training-limit {
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent-border);
+  background: var(--accent-bg);
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .training-charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

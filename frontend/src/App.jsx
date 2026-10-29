@@ -4,6 +4,9 @@ import Plotly from 'plotly.js-dist-min'
 import About from './About'
 import Gallery from './Gallery'
 import Notebook from './Notebook'
+import Models from './Models'
+import PredictionPanel from './PredictionPanel'
+import TrainingPanel from './TrainingPanel'
 import {
   deleteCellNote,
   deleteTadNote,
@@ -642,7 +645,7 @@ function App() {
         <p>
           Chromosome tracing spots on mouse chromosome 19, one cell at a time. Each
           spot is an imaged locus with X, Y, and Z in microns, joined in genomic
-          order along each traced fiber.
+          order along each trace.
         </p>
         <nav className="viewer-tabs">
           <button
@@ -666,18 +669,37 @@ function App() {
           >
             Notebook
           </button>
+          <button
+            type="button"
+            className={tab === 'models' ? 'active' : ''}
+            onClick={() => setTab('models')}
+          >
+            Models
+          </button>
+          <button
+            type="button"
+            className={tab === 'training' ? 'active' : ''}
+            onClick={() => setTab('training')}
+          >
+            Train &amp; monitor
+          </button>
         </nav>
       </header>
 
       {apiOk === false && (
         <p className="api-banner">
-          Annotation API is not running. In the repository root run
+          Application API is not running. In the repository root run
           {' '}
           <code>docker compose up --build</code>
           , then refresh.
         </p>
       )}
 
+      {tab === 'training' && (
+        <TrainingPanel Plot={Plot} dark={dark} cellId={cellId}
+          replicate={selectedCell?.replicate ?? cellReplicate ?? 1} loadSpots={loadSpots} />
+      )}
+      {tab === 'models' && <Models onTrain={() => setTab('training')} />}
       {tab === 'about' && <About />}
       {tab === 'notebook' && (
         <Notebook onOpenCell={openCell} loadSpots={loadSpots} />
@@ -729,7 +751,6 @@ function App() {
                 >
                   Back
                 </button>
-                {/* Later homework: Classify control goes here, next to Back. */}
                 <dl className="cell-meta">
                   <div>
                     <dt>Cell</dt>
@@ -740,7 +761,7 @@ function App() {
                     <dd>{selectedCell?.replicate ?? '—'}</dd>
                   </div>
                   <div>
-                    <dt>Type</dt>
+                    <dt>Recorded type</dt>
                     <dd>{cellTypeLabel ?? '—'}</dd>
                   </div>
                   <div>
@@ -851,6 +872,12 @@ function App() {
         >
           {tab === 'viewer' && cellId && (
             <aside className="viewer-notes">
+              <PredictionPanel
+                key={`${selectedCell?.replicate ?? cellReplicate ?? 1}:${cellId}`}
+                cellId={cellId}
+                replicate={selectedCell?.replicate ?? cellReplicate ?? 1}
+                loadSpots={loadSpots}
+              />
               <div className="cell-note">
                 <label htmlFor="cell-note-text">Cell note</label>
                 <textarea

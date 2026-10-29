@@ -1,8 +1,7 @@
 """FastAPI + SQLite store for viewer notes, pins, traces, and TADs.
 
-The React app talks to these routes through Vite's `/api` proxy. Later
-homeworks can write classifier scores into the empty `predictions` table
-without changing this schema.
+The React app talks to these routes through Vite's `/api` proxy. The saved
+chromosome classifier handles prediction separately from annotation storage.
 """
 
 from __future__ import annotations
@@ -13,8 +12,13 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+from backend.predict import router as prediction_router, validation_error_response
+from training.selected_model import load_selected
+from backend.training_service import TrainingService, router as training_router
 
 # Docker Compose sets this to /data/annotations.db on a bind-mounted volume.
 DB_PATH = os.environ.get("SQLITE_PATH", "/data/annotations.db")
@@ -117,13 +121,24 @@ def init_db() -> None:
 
 
 @asynccontextmanager
-async def lifespan(_app: FastAPI):
-    # Builds the SQLite file before the first request.
+async def lifespan(app: FastAPI):
+    # Opens annotation storage and loads this process's saved predictor once.
     init_db()
-    yield
+    model_dir = Path(os.environ.get("MODEL_DIR", "training/results/three_class_residual_f1_v1"))
+    app.state.predictor = load_selected(model_dir)
+    app.state.training = TrainingService(
+        os.environ.get("TRAINING_DATA_DIR", "data"),
+        os.environ.get("TRAINING_OUTPUT_DIR", "backend/training-runs"),
+        model_dir, app.state.predictor["metadata"],
+    )
+    try:
+        yield
+    finally:
+        app.state.training.close()
 
 
 app = FastAPI(lifespan=lifespan)
+app.add_exception_handler(RequestValidationError, validation_error_response)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -134,6 +149,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+app.include_router(prediction_router)
+app.include_router(training_router)
 
 class TextBody(BaseModel):
     text: str = ""

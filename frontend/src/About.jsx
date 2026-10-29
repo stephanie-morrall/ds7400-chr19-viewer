@@ -1,4 +1,4 @@
-// About tab: HW1 PDF steps 1–5, mapped onto this viewer for a course reader.
+// Maps the HW1 steps onto the viewer and describes the current HW2 additions.
 
 function About() {
   return (
@@ -7,19 +7,18 @@ function About() {
         <h2>Homework 1 steps</h2>
         <p>
           This page is the map from the DS7400 Homework 1 PDF (steps 1–5) onto
-          this application. The Viewer tab is the working tool. The sections
-          below are what each required step produced, including where a later
-          deep learning model will sit.
+          this application. Viewer provides data exploration. HW2 adds cell-type
+          prediction, a model summary, and interactive training.
         </p>
       </section>
 
       <section>
         <h2>Step 1 — Get the web application running</h2>
         <p>
-          The app is a React 19 site created with Vite 8 in the <code>web/</code>
+          The app is a React 19 site created with Vite 8 in the <code>frontend/</code>
           folder. <code>npm run dev</code> in that folder serves
-          <code>http://localhost:5173/</code>. The three tabs are Viewer, About,
-          and Notebook. Notes and pinned spots save through FastAPI to SQLite
+          <code>http://localhost:5173/</code>. The tabs are Viewer, About,
+          Notebook, Models, and Train &amp; monitor. Notes and pinned spots save through FastAPI to SQLite
           when Docker Compose is running.
         </p>
       </section>
@@ -41,13 +40,13 @@ function About() {
           (3,209), Unknown (2,918), Proerythroblast (2,061), Macrophage (731),
           Other (501), Endothelial (400), and Megakaryocyte (171). A clone
           without that catalog loads sample cells 411, 328, and 530 from
-          <code>web/public/sample/</code>.
+          <code>frontend/public/sample/</code>.
         </p>
         <p>
           Rebuild the catalog with
           <code>python3 scripts/build_viewer_catalog.py</code>. That writes
-          gitignored <code>web/public/catalog.json</code> and per-cell JSON
-          under <code>web/public/biorep01/</code> through
+          gitignored <code>frontend/public/catalog.json</code> and per-cell JSON
+          under <code>frontend/public/biorep01/</code> through
           <code>biorep04/</code>.
         </p>
       </section>
@@ -75,8 +74,8 @@ function About() {
         </p>
         <p>
           The Cell type filter is those labels, so a reader can page through
-          hepatocytes or macrophages as grouped examples before any model
-          exists. The Replicate filter checks whether a pattern holds across
+          hepatocytes or macrophages as grouped examples, then compare a selected
+          cell with its prediction. The Replicate filter checks whether a pattern holds across
           the four biological replicates. The Traces filter finds cells with a
           chosen number of traces. Jump-to-page makes a 13,306-cell
           catalog searchable by position. Each tile is a canvas snapshot so
@@ -100,27 +99,24 @@ function About() {
           Nuclear-envelope and nucleolus wireframes are toggles on sample cells
           411, 328, and
           530, where those shapes were fitted offline. Those controls are the
-          inspection tools a later classifier will sit beside: the structure
-          the model sees, and the label it is asked to match.
+          inspection tools beside the cell-type predictor: the structure
+          the model sees and the recorded label it is asked to match.
         </p>
       </section>
 
       <section>
         <h2>Step 5 — Think ahead</h2>
         <p>
-          Later homeworks add a deep neural network that takes one cell's chr19
-          traces (the same X, Y, Z spots this page already plots) and predicts
-          a cell-type name. The label table already on the detail toolbar is
-          the ground truth that prediction will be compared with.
+          HW2 implements the next step: a neural network uses distances between
+          chromosome-19 loci to predict Hepatocyte, Erythroblast, or Proerythroblast. The
+          recorded type on the detail toolbar stays separate from the prediction.
         </p>
         <p>
-          On the one-cell page, that model belongs next to Back and the cell-type
-          line: a Classify control that writes a predicted type beside the
-          catalog label, with a confidence if the model supplies one. On the
-          gallery, the same prediction belongs on the tile caption under the
-          cell id, so a page of thirty cells can be scanned for agreement or
-          disagreement with the label. This homework is the viewer those
-          controls will attach to.
+          On the one-cell page, Predict cell type sends the selected measurements
+          to FastAPI and displays the saved network's prediction and uncalibrated
+          model score. Models compares its selected architecture and results with the initial
+          plain ReLU MLP benchmark. Train &amp; monitor displays the saved results and runs separate
+          practice models with editable epochs and dropout.
         </p>
       </section>
     </div>

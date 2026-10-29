@@ -1,19 +1,14 @@
-# Local data (never push)
+# Local source data and generated application state remain private.
 data/
+backend/data/
+backend/training-runs/
+training/runs/
 
-# Instructor / local documents
-documents/
-
-# macOS
-.DS_Store
-
-# Python / env
+# Local environments, secrets, and generated files stay outside source control.
 .venv/
 venv/
 __pycache__/
 *.py[cod]
 .env
 .env.*
-
-# SQLite annotations written by the Docker API
-api/data/
+.DS_Store

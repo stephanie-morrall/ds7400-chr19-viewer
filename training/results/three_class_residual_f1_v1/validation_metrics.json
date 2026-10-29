@@ -1,0 +1,178 @@
+{
+  "training": {
+    "improved": {
+      "n_cells": 2439,
+      "n_errors": 747,
+      "loss": 0.7395667433738708,
+      "accuracy": 0.6937269372693727,
+      "error": 0.30627306273062727,
+      "balanced_accuracy": 0.6959710565408678,
+      "macro_f1": 0.6868247941263165,
+      "weighted_f1": 0.691859160415785,
+      "per_class": {
+        "Hepatocyte": {
+          "precision": 0.8262108262108262,
+          "recall": 0.5876393110435664,
+          "f1-score": 0.6867969212551805,
+          "support": 987.0
+        },
+        "Erythroblast": {
+          "precision": 0.6527272727272727,
+          "recall": 0.8358556461001164,
+          "f1-score": 0.733027054619704,
+          "support": 859.0
+        },
+        "Proerythroblast": {
+          "precision": 0.6185243328100472,
+          "recall": 0.6644182124789207,
+          "f1-score": 0.640650406504065,
+          "support": 593.0
+        },
+        "accuracy": 0.6937269372693727,
+        "macro avg": {
+          "precision": 0.6991541439160486,
+          "recall": 0.6959710565408678,
+          "f1-score": 0.6868247941263165,
+          "support": 2439.0
+        },
+        "weighted avg": {
+          "precision": 0.714615720417864,
+          "recall": 0.6937269372693727,
+          "f1-score": 0.691859160415785,
+          "support": 2439.0
+        }
+      }
+    },
+    "baseline": {
+      "n_cells": 2439,
+      "n_errors": 743,
+      "loss": 0.6729419231414795,
+      "accuracy": 0.6953669536695367,
+      "error": 0.3046330463304633,
+      "balanced_accuracy": 0.6820427459018132,
+      "macro_f1": 0.6856209226132227,
+      "weighted_f1": 0.6929808123937011,
+      "per_class": {
+        "Hepatocyte": {
+          "precision": 0.7141372141372141,
+          "recall": 0.6960486322188449,
+          "f1-score": 0.7049769112365315,
+          "support": 987.0
+        },
+        "Erythroblast": {
+          "precision": 0.6736736736736737,
+          "recall": 0.7834691501746216,
+          "f1-score": 0.7244348762109796,
+          "support": 859.0
+        },
+        "Proerythroblast": {
+          "precision": 0.702928870292887,
+          "recall": 0.5666104553119731,
+          "f1-score": 0.6274509803921569,
+          "support": 593.0
+        },
+        "accuracy": 0.6953669536695367,
+        "macro avg": {
+          "precision": 0.6969132527012584,
+          "recall": 0.6820427459018132,
+          "f1-score": 0.6856209226132227,
+          "support": 2439.0
+        },
+        "weighted avg": {
+          "precision": 0.6971611054214013,
+          "recall": 0.6953669536695367,
+          "f1-score": 0.6929808123937011,
+          "support": 2439.0
+        }
+      }
+    }
+  },
+  "validation": {
+    "improved": {
+      "n_cells": 1347,
+      "n_errors": 676,
+      "loss": 1.094603419303894,
+      "accuracy": 0.4981440237564959,
+      "error": 0.5018559762435041,
+      "balanced_accuracy": 0.4817796086745438,
+      "macro_f1": 0.4790578337775761,
+      "weighted_f1": 0.49453273572119194,
+      "per_class": {
+        "Hepatocyte": {
+          "precision": 0.4597315436241611,
+          "recall": 0.3477157360406091,
+          "f1-score": 0.3959537572254335,
+          "support": 394.0
+        },
+        "Erythroblast": {
+          "precision": 0.568659127625202,
+          "recall": 0.597623089983022,
+          "f1-score": 0.5827814569536424,
+          "support": 589.0
+        },
+        "Proerythroblast": {
+          "precision": 0.4232558139534884,
+          "recall": 0.5,
+          "f1-score": 0.45843828715365237,
+          "support": 364.0
+        },
+        "accuracy": 0.4981440237564959,
+        "macro avg": {
+          "precision": 0.48388216173428383,
+          "recall": 0.4817796086745438,
+          "f1-score": 0.4790578337775761,
+          "support": 1347.0
+        },
+        "weighted avg": {
+          "precision": 0.4975052491746349,
+          "recall": 0.4981440237564959,
+          "f1-score": 0.49453273572119194,
+          "support": 1347.0
+        }
+      }
+    },
+    "baseline": {
+      "n_cells": 1347,
+      "n_errors": 678,
+      "loss": 1.2355406284332275,
+      "accuracy": 0.49665924276169265,
+      "error": 0.5033407572383073,
+      "balanced_accuracy": 0.48373942123134156,
+      "macro_f1": 0.4829511612120308,
+      "weighted_f1": 0.49749118291773464,
+      "per_class": {
+        "Hepatocyte": {
+          "precision": 0.4223194748358862,
+          "recall": 0.48984771573604063,
+          "f1-score": 0.4535840188014101,
+          "support": 394.0
+        },
+        "Erythroblast": {
+          "precision": 0.5882352941176471,
+          "recall": 0.5602716468590832,
+          "f1-score": 0.5739130434782609,
+          "support": 589.0
+        },
+        "Proerythroblast": {
+          "precision": 0.44376899696048633,
+          "recall": 0.4010989010989011,
+          "f1-score": 0.4213564213564214,
+          "support": 364.0
+        },
+        "accuracy": 0.49665924276169265,
+        "macro avg": {
+          "precision": 0.48477458863800654,
+          "recall": 0.48373942123134156,
+          "f1-score": 0.4829511612120308,
+          "support": 1347.0
+        },
+        "weighted avg": {
+          "precision": 0.5006654611835564,
+          "recall": 0.49665924276169265,
+          "f1-score": 0.49749118291773464,
+          "support": 1347.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "improved": {
+    "n_cells": 1458,
+    "n_errors": 782,
+    "loss": 1.1437288522720337,
+    "accuracy": 0.46364883401920437,
+    "error": 0.5363511659807956,
+    "balanced_accuracy": 0.4469076202639421,
+    "macro_f1": 0.44272875668843276,
+    "weighted_f1": 0.4617134358818928,
+    "per_class": {
+      "Hepatocyte": {
+        "precision": 0.41194029850746267,
+        "recall": 0.31724137931034485,
+        "f1-score": 0.35844155844155845,
+        "support": 435.0
+      },
+      "Erythroblast": {
+        "precision": 0.5604900459418071,
+        "recall": 0.5648148148148148,
+        "f1-score": 0.5626441199077633,
+        "support": 648.0
+      },
+      "Proerythroblast": {
+        "precision": 0.3659574468085106,
+        "recall": 0.45866666666666667,
+        "f1-score": 0.40710059171597635,
+        "support": 375.0
+      },
+      "accuracy": 0.46364883401920437,
+      "macro avg": {
+        "precision": 0.4461292637525934,
+        "recall": 0.4469076202639421,
+        "f1-score": 0.44272875668843276,
+        "support": 1458.0
+      },
+      "weighted avg": {
+        "precision": 0.466135543329375,
+        "recall": 0.46364883401920437,
+        "f1-score": 0.4617134358818928,
+        "support": 1458.0
+      }
+    }
+  },
+  "baseline": {
+    "n_cells": 1458,
+    "n_errors": 802,
+    "loss": 1.2681342363357544,
+    "accuracy": 0.4499314128943759,
+    "error": 0.5500685871056241,
+    "balanced_accuracy": 0.436371789413935,
+    "macro_f1": 0.43577610585206356,
+    "weighted_f1": 0.451135339724294,
+    "per_class": {
+      "Hepatocyte": {
+        "precision": 0.3771760154738878,
+        "recall": 0.4482758620689655,
+        "f1-score": 0.4096638655462185,
+        "support": 435.0
+      },
+      "Erythroblast": {
+        "precision": 0.5421487603305785,
+        "recall": 0.5061728395061729,
+        "f1-score": 0.5235434956105347,
+        "support": 648.0
+      },
+      "Proerythroblast": {
+        "precision": 0.3958333333333333,
+        "recall": 0.3546666666666667,
+        "f1-score": 0.37412095639943743,
+        "support": 375.0
+      },
+      "accuracy": 0.4499314128943759,
+      "macro avg": {
+        "precision": 0.4383860363792665,
+        "recall": 0.436371789413935,
+        "f1-score": 0.43577610585206356,
+        "support": 1458.0
+      },
+      "weighted avg": {
+        "precision": 0.4552959282752785,
+        "recall": 0.4499314128943759,
+        "f1-score": 0.451135339724294,
+        "support": 1458.0
+      }
+    }
+  },
+  "improved_has_lower_error": true,
+  "filter_counts": {
+    "4": {
+      "raw": {
+        "spots": 345849,
+        "traces": 9041,
+        "cells": 3741,
+        "per_class": {
+          "7": {
+            "cells": 616,
+            "traces": 1490
+          },
+          "6": {
+            "cells": 1027,
+            "traces": 2615
+          },
+          "3": {
+            "cells": 858,
+            "traces": 1911
+          },
+          "8": {
+            "cells": 730,
+            "traces": 1824
+          },
+          "1": {
+            "cells": 134,
+            "traces": 330
+          },
+          "2": {
+            "cells": 149,
+            "traces": 343
+          },
+          "4": {
+            "cells": 191,
+            "traces": 450
+          },
+          "5": {
+            "cells": 36,
+            "traces": 78
+          }
+        }
+      },
+      "after_filter_b": {
+        "spots": 290546,
+        "traces": 7643,
+        "cells": 3490,
+        "per_class": {
+          "7": {
+            "cells": 577,
+            "traces": 1275
+          },
+          "6": {
+            "cells": 952,
+            "traces": 2192
+          },
+          "3": {
+            "cells": 806,
+            "traces": 1617
+          },
+          "8": {
+            "cells": 680,
+            "traces": 1546
+          },
+          "1": {
+            "cells": 127,
+            "traces": 292
+          },
+          "2": {
+            "cells": 142,
+            "traces": 305
+          },
+          "4": {
+            "cells": 173,
+            "traces": 354
+          },
+          "5": {
+            "cells": 33,
+            "traces": 62
+          }
+        }
+      },
+      "after_filter_c": {
+        "spots": 172282,
+        "traces": 3964,
+        "cells": 2202,
+        "per_class": {
+          "7": {
+            "cells": 375,
+            "traces": 659
+          },
+          "6": {
+            "cells": 648,
+            "traces": 1220
+          },
+          "3": {
+            "cells": 435,
+            "traces": 737
+          },
+          "8": {
+            "cells": 452,
+            "traces": 846
+          },
+          "1": {
+            "cells": 90,
+            "traces": 159
+          },
+          "4": {
+            "cells": 104,
+            "traces": 179
+          },
+          "2": {
+            "cells": 82,
+            "traces": 138
+          },
+          "5": {
+            "cells": 16,
+            "traces": 26
+          }
+        }
+      },
+      "minimum_observed_loci": 40,
+      "retained_loci": 49,
+      "after_interpolation": {
+        "spots": 194236,
+        "traces": 3964,
+        "cells": 2202,
+        "per_class": {
+          "7": {
+            "cells": 375,
+            "traces": 659
+          },
+          "6": {
+            "cells": 648,
+            "traces": 1220
+          },
+          "3": {
+            "cells": 435,
+            "traces": 737
+          },
+          "8": {
+            "cells": 452,
+            "traces": 846
+          },
+          "1": {
+            "cells": 90,
+            "traces": 159
+          },
+          "4": {
+            "cells": 104,
+            "traces": 179
+          },
+          "2": {
+            "cells": 82,
+            "traces": 138
+          },
+          "5": {
+            "cells": 16,
+            "traces": 26
+          }
+        }
+      },
+      "labeled_retained": {
+        "cells": 2202,
+        "traces": 3964,
+        "per_class": {
+          "1": 90,
+          "2": 82,
+          "3": 435,
+          "4": 104,
+          "5": 16,
+          "6": 648,
+          "7": 375,
+          "8": 452
+        }
+      }
+    }
+  },
+  "class_selection_counts": {
+    "input_cells": 2202,
+    "retained_cells": 1458,
+    "excluded_unknown": 452,
+    "excluded_small_class": 292,
+    "counts_by_paper_code": {
+      "1": 90,
+      "2": 82,
+      "3": 435,
+      "4": 104,
+      "5": 16,
+      "6": 648,
+      "7": 375,
+      "8": 452
+    }
+  },
+  "source_sha256": "e3ab1258a11b8e0bff803279881791cbfe0a6a3d1e2dc2d2461202c9e3b9f029",
+  "evaluation_note": "Replicate 4 was used by earlier models. This reused holdout is not an unseen final test.",
+  "freeze_sha256": "d1322530fa5903157d8b61a4f161540cc5095476fe6211e17ea0da299889ee34"
+}
