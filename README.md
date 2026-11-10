@@ -150,15 +150,33 @@ python research/hw3-three-path-2026-11-09/analyse.py \
 ```
 
 The analyzer checks completion hashes, original targets and predictions, class
-metrics, cross-entropy and selected epochs. Its secondary HW2 row is an explicitly
-reused aggregate, rather than a newly trained baseline. The public summary and CSVs
-can be inspected without the private inputs or local prediction arrays.
+metrics, cross-entropy and selected epochs for the six CNN fits. The committed
+summary also records a separately completed, training-matched HW2 diagnostic.
+The public summary and CSVs can be inspected without the private inputs or local
+prediction arrays.
 
 The original HW2 fit used zero momentum, one forward per batch, maximum 2,000
 and patience 200. A secondary reference reuses three HW2 fits under the same
 optimizer, batch, two-forward loss, cap and patience as HW3. Its dense interpolated
 representation and dropout 0.8 remain intact. This controls training settings,
 while representation differences still prevent an architecture-only causal claim.
+
+To reproduce that secondary diagnostic, use the isolated
+[HW2 reference trainer](research/hw3-three-path-2026-11-09/train_hw2_reference.py)
+and its [configuration](research/hw3-three-path-2026-11-09/hw2_reference_config.json):
+
+```sh
+python research/hw3-three-path-2026-11-09/train_hw2_reference.py \
+  --seed 42 --device cuda --threads 1 \
+  --output research/hw3-three-path-2026-11-09/results/hw2_reference/seed42
+```
+
+Repeat with seeds 43 and 44 in separate output folders. Each fit saves its
+validation metrics and training history. The
+[recorded three-seed table](research/hw3-three-path-2026-11-09/report/hw2-reference-per-seed.csv)
+distinguishes selected-checkpoint scores from final-epoch losses. The reference
+averages two stochastic dropout forwards of the same dense input per batch;
+rotation leaves these pairwise-distance inputs unchanged.
 
 ## 5. Main results
 

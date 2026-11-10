@@ -97,6 +97,24 @@ recorded in the configuration rather than inferred from the observed fit length.
 
 ## Verification and analysis
 
+The secondary, training-matched HW2 diagnostic has its own isolated
+[trainer](train_hw2_reference.py) and [configuration](hw2_reference_config.json).
+It retains the HW2 residual MLP, dense distance inputs and dropout 0.8, while
+matching the new panel's optimizer, cap, patience, batch size and two-forward loss:
+
+```sh
+python research/hw3-three-path-2026-11-09/train_hw2_reference.py \
+  --seed 42 --device cuda --threads 1 \
+  --output research/hw3-three-path-2026-11-09/results/hw2_reference/seed42
+```
+
+Run seeds 43 and 44 with separate output folders as well. Each reference fit saves
+metrics, history, selected weights and local predictions. Its two dropout forwards
+use the same distance input, which is invariant to rotation. The
+[recorded per-seed table](report/hw2-reference-per-seed.csv) shows the diagnostic's
+selected scores and final losses. The six-CNN analyzer below handles the primary
+attention panel separately.
+
 The eight model tests require the authorized observed cache:
 
 ```sh
