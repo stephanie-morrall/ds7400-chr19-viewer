@@ -6,6 +6,10 @@ macro F1:** the three-path CNN scored 0.439 with attention and 0.442 with attent
 bypassed, compared with the original HW2 result of 0.479. The web API retains the
 frozen HW2 predictor. The Models tab explains the HW3 design and results.
 
+HW3 submission materials: [2:55 narrated video](docs/hw3/HW3-Video.mp4) and
+[two-page summary](docs/hw3/report.pdf). The video includes an on-screen correction:
+the CNN without attention scored **0.442 macro F1**.
+
 ## 1. Task and dataset
 
 The prediction task distinguishes Hepatocyte, Erythroblast and Proerythroblast cells
