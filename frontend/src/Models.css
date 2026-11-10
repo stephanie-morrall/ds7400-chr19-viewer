@@ -81,6 +81,41 @@
 
 .models-results { margin-top: 20px; }
 .models-results h3 { font-size: 18px; margin-bottom: 10px; }
+.hw3-experiment-section h4 { font-size: 19px; margin: 22px 0 10px; }
+.hw3-experiment-section table { margin: 12px 0; }
+.hw3-result-figure { display: block; width: 100%; height: auto; margin: 16px 0; }
+.hw3-comparison { margin: 22px 0; }
+.hw3-comparison-heading { display: flex; gap: 16px; align-items: center;
+  justify-content: space-between; margin: 16px 0; }
+.hw3-comparison-heading h4 { font-size: 20px; margin: 0; }
+.hw3-comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px; align-items: start; }
+.hw3-comparison-card { margin: 0; min-width: 0; padding: 12px;
+  border: 1px solid var(--border); border-radius: 8px; }
+.hw3-comparison-card figcaption { margin-bottom: 12px; }
+.hw3-comparison-card strong, .hw3-comparison-card span { display: block; }
+.hw3-comparison-card strong { font-size: 18px; }
+.hw3-comparison-card span { color: var(--text); font-size: 14px; margin: 4px 0; }
+.hw3-comparison-card p { font-size: 15px; line-height: 1.4; }
+.hw3-comparison-card img { display: block; width: 100%; height: auto; background: white; }
+.hw3-comparison-dialog { width: calc(100vw - 48px); max-width: 1420px; max-height: 92vh;
+  overflow: auto; padding: 20px; border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text-h); background: var(--bg); }
+.hw3-comparison-dialog::backdrop { background: rgb(0 0 0 / 65%); }
+.hw3-comparison-full { grid-template-columns: repeat(2, minmax(640px, 1fr)); }
+.hw3-comparison-full img { width: 640px; max-width: none; margin: 0 auto; }
+.hw3-architecture .hw3-comparison-full img {
+  box-sizing: content-box;
+  width: 640px;
+  max-width: none;
+}
+@media (max-width: 900px) {
+  .hw3-comparison-grid { grid-template-columns: 1fr; }
+  .hw3-comparison-full { grid-template-columns: minmax(640px, 1fr); }
+  .hw3-comparison-heading { flex-wrap: wrap; }
+  .hw3-comparison-card a { display: block; overflow-x: auto; }
+  .hw3-comparison-card img { min-width: 560px; }
+}
 .models-table-wrap { overflow-x: auto; }
 .models-results table { width: 100%; border-collapse: collapse; font-size: 15px; }
 .models-results th, .models-results td { padding: 8px 12px; border: 1px solid var(--border); }
@@ -107,3 +142,60 @@
 
 .models-selection { margin-top: 14px; }
 .models-comparison { margin: 12px 0 6px; }
+
+.hw3-architecture {
+  margin: 24px 0;
+  padding: 22px;
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+}
+
+.hw3-architecture-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin-bottom: 10px;
+}
+
+.hw3-architecture-heading h3 { margin: 0; }
+.hw3-model-status { font-size: 13px; color: var(--text); }
+.hw3-architecture > p { margin: 8px 0; line-height: 1.55; }
+.hw3-architecture-figure { margin: 18px 0; }
+.hw3-architecture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+}
+.hw3-architecture figcaption { margin-top: 8px; font-size: 13px; color: var(--text); }
+.hw3-architecture-details { margin-top: 14px; }
+.hw3-architecture-details summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+.hw3-architecture-details img { margin-top: 10px; }
+.hw3-architecture-terms { margin: 8px 0; }
+.hw3-architecture-terms > div { margin: 0 0 14px; }
+.hw3-architecture-terms dt { font-weight: 650; }
+.hw3-architecture-terms dd { margin: 4px 0 0; line-height: 1.55; }
+.hw3-term-example { display: block; margin-top: 5px; color: var(--text); }
+
+@media (max-width: 600px) {
+  .hw3-architecture { padding: 14px; }
+}
+
+/* The primary diagram stays large; comparison images pan inside their own cards. */
+.hw3-comparison > summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+.hw3-comparison-card a { display: block; max-width: 100%; overflow-x: auto; }
+.hw3-comparison-card:nth-child(2) img { min-width: 800px; }
+.hw3-comparison-full { grid-template-columns: 680px 1640px; }
+.hw3-architecture .hw3-comparison-full img { width: auto; }
+@media (max-width: 900px) {
+  .hw3-comparison-full { grid-template-columns: 1640px; }
+}
+.hw3-architecture-figure a, .hw3-architecture-details > a {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+.hw3-architecture-figure img, .hw3-architecture-details > a > img { min-width: 800px; }

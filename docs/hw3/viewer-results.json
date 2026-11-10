@@ -1,0 +1,143 @@
+{
+  "status": "verified",
+  "stage": "hw3-three-path-2026-11-09",
+  "protocol": "three-path-residual-cnn-trace-attention-v1-momentum-p100-e1000",
+  "architecture_parameters": 161075,
+  "model_sha256": "5b6053aa320aa6c5d4e0d7d257a8596cbcad1ee2ecb97ae446daf1c267b6caa7",
+  "rows": [
+    {
+      "condition": "hw2_original",
+      "name": "Original HW2 saved model \u00b7 seed 42",
+      "seeds": 1,
+      "macro_f1": 0.4790578337775761,
+      "sample_sd": null,
+      "seconds_per_fit": null
+    },
+    {
+      "condition": "no_attention",
+      "name": "Three-path CNN \u00b7 attention bypassed",
+      "seeds": 3,
+      "macro_f1": 0.442043786859945,
+      "sample_sd": 0.004855680883988152,
+      "seconds_per_fit": 249.5112244747579
+    },
+    {
+      "condition": "attention",
+      "name": "Three-path CNN + trace attention",
+      "seeds": 3,
+      "macro_f1": 0.4389523339419273,
+      "sample_sd": 0.005147056276030834,
+      "seconds_per_fit": 290.9639540265004
+    }
+  ],
+  "diagnostics": [],
+  "source_sha256": "0c751adf258ae0202c8eae369c071e24161613a23ec1e344b223e1b48d9d66f9",
+  "historical_hw2_macro_f1": 0.4790578337775761,
+  "validation_cells": 1347,
+  "training": {
+    "protocol": "three-path-residual-cnn-trace-attention-v1-momentum-p100-e1000",
+    "conditions": [
+      "attention",
+      "no_attention"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "optimizer": "SGD",
+    "learning_rate": 0.01,
+    "momentum": 0.9,
+    "weight_decay": 0.0,
+    "batch_size": 64,
+    "evaluation_batch_size": 64,
+    "maximum_epochs": 1000,
+    "early_stopping_patience": 100,
+    "selection": "maximum validation macro F1; lower CE on ties; earliest exact tie",
+    "patience_rule": "only strictly higher macro F1 resets patience, matching HW2",
+    "epoch_zero_eligible": true,
+    "loss": "mean of two unweighted per-cell cross-entropies",
+    "training_views": [
+      "original",
+      "whole-cell SO(3) centered-XYZ rotation"
+    ],
+    "rotation": "Haar proper rotation; one matrix per cell shared across its traces",
+    "rotation_unchanged_inputs": [
+      "pair distances",
+      "cell area",
+      "measurement availability"
+    ],
+    "hw2_views": "same dense distances twice with independent dropout forwards",
+    "validation": "original inputs; dropout disabled; never augmented",
+    "noise_jitter": false,
+    "zoom": false,
+    "auxiliary_loss": false,
+    "new_model_imputation": "none",
+    "new_model_dropout": 0.2,
+    "hw2_dropout": 0.8,
+    "area_standardization": "population mean and standard deviation of training cells only",
+    "shuffle_seed_offset": 10000,
+    "rotation_seed_offset": 20000,
+    "cublas_workspace_config": ":4096:8",
+    "deterministic_algorithms": true,
+    "cuda_tf32": false,
+    "expected_cells": {
+      "train": 2439,
+      "validation": 1347
+    },
+    "expected_replicates": {
+      "train": [
+        1,
+        2
+      ],
+      "validation": [
+        3
+      ]
+    },
+    "class_names": [
+      "Hepatocyte",
+      "Erythroblast",
+      "Proerythroblast"
+    ],
+    "inputs": {
+      "observed": {
+        "path": "research/hw3-observed-geometry-2026-11-09/observed.npz",
+        "sha256": "6cac54798b0d6747b63c75bd998c6d59eee74cffb398c72b130e1b3382afc77e"
+      },
+      "hw2_dense": {
+        "path": "research/hw3-architecture-pilot-2026-11-02/inputs.npz",
+        "sha256": "436ef34efd13c1b11ad761b4b80ed1fdf5290fc13fd5dcbb748683ff367dc398"
+      },
+      "hw2_original": {
+        "path": "research/retry-three-class-2026-10-28/coordinates/provenance/inputs.npz",
+        "sha256": "2662c8ce76d96ed0002046e031393ee09e3179b647610cebe0dc00a5c8b13ea7"
+      }
+    },
+    "hw2_frozen_folder": "training/results/three_class_residual_f1_v1",
+    "hw2_reference_scope": "actual HW2 architecture and dense inputs, common two-forward retraining",
+    "historical_hw2_scope": "separate frozen seed-42 result trained with one forward per batch",
+    "comparison_limit": "Frozen HW2 differs in preprocessing, optimizer and training budget; the matched new-CNN ablation bypasses only the trace-attention update.",
+    "path_base": "repository root",
+    "metadata_features": [
+      "train-standardized cell area",
+      "valid trace count / 4",
+      "observed locus fraction among valid traces",
+      "cell area missing flag"
+    ],
+    "metadata_hidden_features": 16,
+    "geometry_features": 32,
+    "residual_blocks_per_encoder": 4,
+    "convolution_layers_per_encoder": 9
+  },
+  "uncertainty": "New models: mean and sample SD across three seeds. Original HW2: one saved seed under different training rules.",
+  "matched_diagnostic": {
+    "status": "VERIFIED_REUSED_DIAGNOSTIC",
+    "newly_rerun": false,
+    "macro_f1_mean": 0.2064104687047532,
+    "macro_f1_sample_sd": 0.04293879535454181
+  },
+  "attention_minus_bypass": {
+    "mean": -0.003091452918017675,
+    "sample_sd": 0.0023048784338699775
+  }
+}

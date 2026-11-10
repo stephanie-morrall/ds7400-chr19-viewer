@@ -12,3 +12,10 @@ __pycache__/
 .env
 .env.*
 .DS_Store
+
+# HW3 training caches, per-cell outputs and newly fitted checkpoints stay local.
+/research/**/*.npz
+/research/**/*.npy
+/research/**/weights.pt
+/research/**/initial.pt
+/research/**/runs/

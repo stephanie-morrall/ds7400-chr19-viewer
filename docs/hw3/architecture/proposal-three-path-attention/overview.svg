@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1720" viewBox="0 0 1600 1720">
+<title>Three-path cell classifier: implemented architecture</title>
+<defs><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#526174"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="50" y="55" font-size="44" fill="#223047" text-anchor="start" font-weight="700">Three-path cell classifier: implemented architecture</text>
+<text x="50" y="105" font-size="28" fill="#223047" text-anchor="start">Code-matched specification · 161,075 parameters · evaluation reported separately</text>
+<rect x="40" y="180" width="350" height="165" rx="10" fill="#e5eef9" stroke="#526174" stroke-width="2"/>
+<text x="215.0" y="215.5" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">XYZ</text>
+<text x="215.0" y="253.5" font-size="32" fill="#223047" text-anchor="middle">[T, 49, 3]</text>
+<text x="215.0" y="291.5" font-size="32" fill="#223047" text-anchor="middle">common centering</text>
+<text x="215.0" y="329.5" font-size="32" fill="#223047" text-anchor="middle">train: cell rotation</text>
+<rect x="450" y="180" width="380" height="165" rx="10" fill="#e5eef9" stroke="#526174" stroke-width="2"/>
+<text x="640.0" y="234.5" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">XYZ Conv1D encoder</text>
+<text x="640.0" y="272.5" font-size="32" fill="#223047" text-anchor="middle">stem + 4 blocks</text>
+<text x="640.0" y="310.5" font-size="32" fill="#223047" text-anchor="middle">[T, 49, 32]</text>
+<rect x="40" y="420" width="350" height="165" rx="10" fill="#e2f1e9" stroke="#526174" stroke-width="2"/>
+<text x="215.0" y="455.5" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">Distance profiles</text>
+<text x="215.0" y="493.5" font-size="32" fill="#223047" text-anchor="middle">[T, 49, 49]</text>
+<text x="215.0" y="531.5" font-size="32" fill="#223047" text-anchor="middle">endpoint masks</text>
+<text x="215.0" y="569.5" font-size="32" fill="#223047" text-anchor="middle">µm · unaveraged</text>
+<rect x="450" y="420" width="380" height="165" rx="10" fill="#e2f1e9" stroke="#526174" stroke-width="2"/>
+<text x="640.0" y="474.5" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">Distance Conv1D</text>
+<text x="640.0" y="512.5" font-size="32" fill="#223047" text-anchor="middle">stem + 4 blocks</text>
+<text x="640.0" y="550.5" font-size="32" fill="#223047" text-anchor="middle">[T, 49, 32]</text>
+<rect x="910" y="285" width="300" height="165" rx="10" fill="#eee8f6" stroke="#526174" stroke-width="2"/>
+<text x="1060.0" y="339.5" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">CONCAT channels</text>
+<text x="1060.0" y="377.5" font-size="32" fill="#223047" text-anchor="middle">[32 | 32] → 64</text>
+<text x="1060.0" y="415.5" font-size="32" fill="#223047" text-anchor="middle">[T, 49, 64]</text>
+<rect x="1270" y="285" width="290" height="165" rx="10" fill="#eee8f6" stroke="#526174" stroke-width="2"/>
+<text x="1415.0" y="320.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Ordered readout</text>
+<text x="1415.0" y="358.5" font-size="30" fill="#223047" text-anchor="middle">flatten 3,136</text>
+<text x="1415.0" y="396.5" font-size="30" fill="#223047" text-anchor="middle">Dense 32 + ReLU</text>
+<text x="1415.0" y="434.5" font-size="30" fill="#223047" text-anchor="middle">[T, 32]</text>
+<path d="M390,262 L450,262" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M390,502 L450,502" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M830,262 L870,262 L870,350 L910,350" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M830,502 L870,502 L870,400 L910,400" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M1210,367 L1270,367" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<text x="50" y="630" font-size="28" fill="#223047" text-anchor="start">Conv1D slides along 49 genomic slots. Separate encoders share weights across traces.</text>
+<text x="50" y="735" font-size="38" fill="#223047" text-anchor="start" font-weight="700">Self-attention reads all T trace vectors together</text>
+<text x="50" y="777" font-size="28" fill="#223047" text-anchor="start">T = 4 illustrated · T can be 1–4</text>
+<rect x="35" y="805" width="290" height="240" rx="8" fill="white" stroke="#526174" stroke-width="1.5"/>
+<rect x="50" y="820" width="260" height="43" rx="10" fill="#e5eef9" stroke="#526174" stroke-width="2"/>
+<text x="180.0" y="851.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 1 · [32]</text>
+<rect x="50" y="876" width="260" height="43" rx="10" fill="#e5eef9" stroke="#526174" stroke-width="2"/>
+<text x="180.0" y="907.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 2 · [32]</text>
+<rect x="50" y="932" width="260" height="43" rx="10" fill="#e5eef9" stroke="#526174" stroke-width="2"/>
+<text x="180.0" y="963.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 3 · [32]</text>
+<rect x="50" y="988" width="260" height="43" rx="10" fill="#e5eef9" stroke="#526174" stroke-width="2"/>
+<text x="180.0" y="1019.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 4 · [32]</text>
+<rect x="430" y="840" width="350" height="165" rx="10" fill="#e5eef9" stroke="#526174" stroke-width="2"/>
+<text x="605.0" y="894.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Masked self-attention</text>
+<text x="605.0" y="932.5" font-size="30" fill="#223047" text-anchor="middle">[T, 32] → [T, 32]</text>
+<text x="605.0" y="970.5" font-size="30" fill="#223047" text-anchor="middle">one token per trace</text>
+<circle cx="835" cy="920" r="27" fill="white" stroke="#526174" stroke-width="3"/>
+<text x="835" y="933" font-size="42" fill="#223047" text-anchor="middle">+</text>
+<rect x="885" y="805" width="290" height="240" rx="8" fill="white" stroke="#526174" stroke-width="1.5"/>
+<rect x="900" y="820" width="260" height="43" rx="10" fill="#e2f1e9" stroke="#526174" stroke-width="2"/>
+<text x="1030.0" y="851.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 1 · [32]</text>
+<rect x="900" y="876" width="260" height="43" rx="10" fill="#e2f1e9" stroke="#526174" stroke-width="2"/>
+<text x="1030.0" y="907.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 2 · [32]</text>
+<rect x="900" y="932" width="260" height="43" rx="10" fill="#e2f1e9" stroke="#526174" stroke-width="2"/>
+<text x="1030.0" y="963.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 3 · [32]</text>
+<rect x="900" y="988" width="260" height="43" rx="10" fill="#e2f1e9" stroke="#526174" stroke-width="2"/>
+<text x="1030.0" y="1019.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Trace 4 · [32]</text>
+<rect x="1220" y="860" width="340" height="130" rx="10" fill="#eee8f6" stroke="#526174" stroke-width="2"/>
+<text x="1390.0" y="916.0" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">Mean valid traces</text>
+<text x="1390.0" y="954.0" font-size="32" fill="#223047" text-anchor="middle">[T, 32] → [32]</text>
+<path d="M1415,450 L1580,450 L1580,790 L180,790 L180,805" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M325,920 L430,920" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M780,920 L808,920" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M350,920 L350,815 L835,815 L835,893" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<text x="620" y="778" font-size="26" fill="#223047" text-anchor="middle">ADD original vectors</text>
+<path d="M862,920 L885,920" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M1175,920 L1220,920" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<text x="900" y="1075" font-size="28" fill="#223047" text-anchor="start">Four trace vectors remain before the mean.</text>
+<rect x="40" y="1200" width="350" height="165" rx="10" fill="#faecd9" stroke="#526174" stroke-width="2"/>
+<text x="215.0" y="1235.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Metadata [4]</text>
+<text x="215.0" y="1273.5" font-size="30" fill="#223047" text-anchor="middle">area z · count/4</text>
+<text x="215.0" y="1311.5" font-size="30" fill="#223047" text-anchor="middle">observed fraction</text>
+<text x="215.0" y="1349.5" font-size="30" fill="#223047" text-anchor="middle">area missing flag</text>
+<rect x="450" y="1200" width="350" height="165" rx="10" fill="#faecd9" stroke="#526174" stroke-width="2"/>
+<text x="625.0" y="1273.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Dense 16 + ReLU</text>
+<text x="625.0" y="1311.5" font-size="30" fill="#223047" text-anchor="middle">16 learned features</text>
+<rect x="910" y="1200" width="300" height="165" rx="10" fill="#eee8f6" stroke="#526174" stroke-width="2"/>
+<text x="1060.0" y="1273.5" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">CONCAT features</text>
+<text x="1060.0" y="1311.5" font-size="30" fill="#223047" text-anchor="middle">[32 | 16] → [48]</text>
+<path d="M390,1282 L450,1282" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M800,1282 L910,1282" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M1390,990 L1390,1150 L1060,1150 L1060,1200" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<text x="1215" y="1188" font-size="28" fill="#223047" text-anchor="start">32 learned features</text>
+<rect x="40" y="1450" width="300" height="140" rx="10" fill="#eee8f6" stroke="#526174" stroke-width="2"/>
+<text x="190.0" y="1492.0" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Dropout p = 0.2</text>
+<text x="190.0" y="1530.0" font-size="30" fill="#223047" text-anchor="middle">training only</text>
+<text x="190.0" y="1568.0" font-size="30" fill="#223047" text-anchor="middle">eval: identity</text>
+<rect x="400" y="1450" width="350" height="140" rx="10" fill="#eee8f6" stroke="#526174" stroke-width="2"/>
+<text x="575.0" y="1511.0" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">Dense 32 + ReLU</text>
+<text x="575.0" y="1549.0" font-size="32" fill="#223047" text-anchor="middle">[48] → [32]</text>
+<rect x="810" y="1450" width="300" height="140" rx="10" fill="#eee8f6" stroke="#526174" stroke-width="2"/>
+<text x="960.0" y="1511.0" font-size="32" fill="#223047" text-anchor="middle" font-weight="700">Dense 3</text>
+<text x="960.0" y="1549.0" font-size="32" fill="#223047" text-anchor="middle">three logits</text>
+<rect x="1170" y="1450" width="390" height="140" rx="10" fill="#f5f6f8" stroke="#526174" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="1365.0" y="1511.0" font-size="30" fill="#223047" text-anchor="middle" font-weight="700">Prediction softmax</text>
+<text x="1365.0" y="1549.0" font-size="30" fill="#223047" text-anchor="middle">class probabilities</text>
+<path d="M1060,1365 L1060,1405 L190,1405 L190,1450" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M340,1520 L400,1520" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M750,1520 L810,1520" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)"/>
+<path d="M1110,1520 L1170,1520" fill="none" stroke="#526174" stroke-width="3" marker-end="url(#a)" stroke-dasharray="9 6"/>
+<text x="50" y="1650" font-size="30" fill="#223047" text-anchor="start">Dropout preserves vector width: 48. The classifier creates three class scores.</text>
+<text x="50" y="1700" font-size="28" fill="#223047" text-anchor="start">XYZ and distances: microns. Area z-score uses training-only mean and SD.</text>
+</g></svg>

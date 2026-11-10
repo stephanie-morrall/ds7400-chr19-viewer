@@ -1,0 +1,7 @@
+/results/
+/regenerated-report/
+*.npz
+*.npy
+*.pt
+*.out
+__pycache__/

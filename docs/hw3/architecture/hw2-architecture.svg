@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1080" viewBox="0 0 640 1080">
+<title>HW2: residual MLP</title>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#526174"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="320" y="35" text-anchor="middle" font-size="24" fill="#243347" font-weight="700">HW2: residual MLP</text>
+<text x="320" y="64" text-anchor="middle" font-size="16" fill="#243347">Average traces first, then learn cell features.</text>
+<text x="320" y="89" text-anchor="middle" font-size="16" fill="#243347">39,875 parameters · one prediction per cell</text>
+<rect x="150" y="120" width="340" height="60" rx="7" fill="#f2f5f9" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="146.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">A cell’s 1–4 traces</text>
+<text x="320.0" y="166.0" text-anchor="middle" font-size="16" fill="#243347">49 ordered genomic loci</text>
+<rect x="150" y="205" width="340" height="60" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="231.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Pair distances within each trace</text>
+<text x="320.0" y="251.0" text-anchor="middle" font-size="16" fill="#243347">1,176 distinct pairs · µm</text>
+<rect x="150" y="290" width="340" height="65" rx="7" fill="#eee9f7" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="318.5" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Average across traces</text>
+<text x="320.0" y="338.5" text-anchor="middle" font-size="16" fill="#243347">1,176 numbers per cell</text>
+<rect x="150" y="390" width="340" height="48" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="420.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Dense 1,176 → 32</text>
+<rect x="220" y="460" width="200" height="42" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="487.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">ReLU</text>
+<rect x="20" y="535" width="600" height="280" rx="10" fill="#fafbfd" stroke="#c8d1dc"/>
+<text x="320" y="563" text-anchor="middle" font-size="19" fill="#243347" font-weight="700">Two-layer residual correction</text>
+<rect x="170" y="580" width="300" height="42" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="607.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Dense 32 → 32</text>
+<rect x="170" y="640" width="300" height="38" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="665.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">ReLU</text>
+<rect x="170" y="696" width="300" height="42" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="723.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Dropout p = 0.8</text>
+<rect x="170" y="756" width="300" height="42" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="783.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Dense 32 → 32</text>
+<path d="M320,180 L320,205" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,265 L320,290" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,355 L320,390" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,438 L320,460" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,622 L320,640" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,678 L320,696" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,738 L320,756" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,798 L320,835" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,502 L320,520 L520,520 L520,601 L470,601" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<circle cx="320" cy="850" r="15" fill="white" stroke="#526174" stroke-width="1.8"/>
+<text x="320" y="856" text-anchor="middle" font-size="23" fill="#243347">+</text>
+<path d="M320,520 L75,520 L75,850 L305,850" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="150" y="833" text-anchor="middle" font-size="16" fill="#243347">Stem skip</text>
+<rect x="220" y="885" width="200" height="38" rx="7" fill="#e6effa" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="910.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">ReLU</text>
+<rect x="150" y="945" width="340" height="44" rx="7" fill="#fbeddc" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="973.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Dense 32 → 3</text>
+<rect x="150" y="1010" width="340" height="44" rx="7" fill="#fbeddc" stroke="#8c9cae" stroke-width="1.4"/>
+<text x="320.0" y="1038.0" text-anchor="middle" font-size="16" fill="#243347" font-weight="700">Three cell-type scores (logits)</text>
+<path d="M320,865 L320,885" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,923 L320,945" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M320,989 L320,1010" fill="none" stroke="#526174" stroke-width="1.8" marker-end="url(#a)"/>
+</g></svg>
